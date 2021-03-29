@@ -1,0 +1,6 @@
+<?php
+
+$lacle = "[CLE SECRETE]";
+
+
+
