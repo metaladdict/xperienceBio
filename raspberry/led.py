@@ -3,7 +3,6 @@
 from time import sleep
 import time
 from picamera import PiCamera
-import requests
 import RPi.GPIO as GPIO
 
 #Définit le mode de numérotation (Board)
@@ -32,14 +31,6 @@ camera.capture(fname)
 camera.stop_preview()
 sleep(2)
 
-#Envoi du fichier vers le serveur
-with open(fname, "rb") as f:
-	s = requests.Session()
-	r = s.post('https://[SERVEUR CIBLE]/saveme.php',
-		data={'lacle':'[CLE SECRETE]'},
-		files={'files':f})
-	print(r.status_code)
-    
 #On éteint les LED
 for l in LedList:
 	GPIO.output(l, GPIO.LOW)
